@@ -104,11 +104,14 @@ class Node
     /**
      * Returns epoch UNIX timestamp.
      *
-     * @return int
+     * @return \DateTime
      */
-    public function getEpoch(): int
+    public function getEpoch(): \DateTime
     {
-        return $this->epoch;
+        $timeStamp = (int) floor($this->epoch / 1000);
+
+        return (new \DateTime())
+            ->setTimestamp($timeStamp);
     }
 
     /**
@@ -122,11 +125,11 @@ class Node
      */
     public function setEpoch(\DateTime $epoch): self
     {
-        if ($epoch > $this->now()) {
+        if ($epoch > new \DateTime('now')) {
             throw new InvalidArgumentException('This epoch has not yet come');
         }
 
-        $this->epoch = $epoch;
+        $this->epoch = $epoch->getTimestamp() * 1000;
 
         return $this;
     }

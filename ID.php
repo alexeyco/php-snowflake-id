@@ -155,6 +155,6 @@ class ID
         $nodeBits = str_pad(decbin($this->node), 10, '0', STR_PAD_LEFT);
         $stepBits = str_pad(decbin($this->step), 12, '0', STR_PAD_LEFT);
 
-        return bindec('0'.$timeBits.$nodeBits.$stepBits);
+        return (int) bindec('0'.$timeBits.$nodeBits.$stepBits);
     }
 }
