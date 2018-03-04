@@ -1,0 +1,21 @@
+{
+    "name": "alexeyco/php-snowflake-id",
+    "description": "Generate Twitter Snowflake flavoured ID's",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexey Popov",
+            "email": "alexey.popov@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0"
+    },
+    "autoload": {
+        "psr-4": { "SnowFlake\\": "" },
+        "exclude-from-classmap": [
+        ]
+    },
+    "minimum-stability": "dev"
+}
