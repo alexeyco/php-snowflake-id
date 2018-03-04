@@ -1,5 +1,7 @@
 # PHP Snowflake ID
 
+[![Build Status](https://travis-ci.org/alexeyco/php-snowflake-id.svg?branch=master)](https://travis-ci.org/alexeyco/php-snowflake-id)
+[![Coverage Status](https://coveralls.io/repos/github/alexeyco/php-snowflake-id/badge.svg?branch=master)](https://coveralls.io/github/alexeyco/php-snowflake-id?branch=master)
 [![StyleCI](https://styleci.io/repos/123744194/shield?branch=master)](https://styleci.io/repos/123744194?branch=master)
 
 Twitter Snowflake flavoured IDs:

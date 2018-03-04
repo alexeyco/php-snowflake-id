@@ -20,19 +20,17 @@ class Base58Test extends TestCase
      * @var array
      */
     protected $data = [
-        'wbRSUs725' => 3865871070540006,
-        'BSgacd7F2' => 4593184132952479,
+        'wbRSUs725'  => 3865871070540006,
+        'BSgacd7F2'  => 4593184132952479,
         '24e1JhG8Tf' => 7840579534856344,
-        'KBZCPC4vr' => 5586186042968807,
-        'vqmQygwPY' => 3767614233977710,
+        'KBZCPC4vr'  => 5586186042968807,
+        'vqmQygwPY'  => 3767614233977710,
         '2fjzHcZMFF' => 9261568911951049,
         '2gNZ61mMQQ' => 9452345438437860,
     ];
 
     /**
-     * Test encoder
-     *
-     * @covers Base58::encode
+     * Test encoder.
      *
      * @return void
      */
@@ -48,8 +46,6 @@ class Base58Test extends TestCase
 
     /**
      * Test decoder.
-     *
-     * @covers Base58::decode
      *
      * @return void
      */
