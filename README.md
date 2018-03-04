@@ -1,5 +1,7 @@
 # PHP Snowflake ID
 
+[![StyleCI](https://styleci.io/repos/123744194/shield?branch=master)](https://styleci.io/repos/123744194?branch=master)
+
 Twitter Snowflake flavoured IDs:
 * Generate and parse it;
 * Convert it to base32, base58 and base64 data types;
