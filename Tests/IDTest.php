@@ -100,7 +100,7 @@ class IDTest extends TestCase
                     'step'  => 2476,
                 ],
                 'result' => 10282171189676,
-            ]
+            ],
         ];
 
         foreach ($testSet as $set) {
@@ -145,7 +145,7 @@ class IDTest extends TestCase
                     'step'  => 1179,
                 ],
                 'result' => 'cxb5ok5gb',
-            ]
+            ],
         ];
 
         foreach ($testSet as $set) {
@@ -190,7 +190,7 @@ class IDTest extends TestCase
                     'step'  => 347,
                 ],
                 'result' => '9HYqtFs4',
-            ]
+            ],
         ];
 
         foreach ($testSet as $set) {
@@ -235,7 +235,7 @@ class IDTest extends TestCase
                     'step'  => 1164,
                 ],
                 'result' => 'MzkxOTExMjM1OTY0Mjg=',
-            ]
+            ],
         ];
 
         foreach ($testSet as $set) {
