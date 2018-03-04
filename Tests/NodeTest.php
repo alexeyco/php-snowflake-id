@@ -10,8 +10,8 @@
  */
 
 use PHPUnit\Framework\TestCase;
-use SnowFlake\Node;
 use SnowFlake\InvalidArgumentException;
+use SnowFlake\Node;
 
 class NodeTest extends TestCase
 {
