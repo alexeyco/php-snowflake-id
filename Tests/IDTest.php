@@ -18,8 +18,6 @@ class IDTest extends TestCase
      * Check node getter.
      *
      * @return void
-     *
-     * @covers ID::getNode
      */
     public function testGetNode(): void
     {
@@ -33,8 +31,6 @@ class IDTest extends TestCase
      * Check time getter.
      *
      * @return void
-     *
-     * @covers ID::getTime
      */
     public function testGetTime(): void
     {
@@ -48,8 +44,6 @@ class IDTest extends TestCase
      * Check step getter.
      *
      * @return void
-     *
-     * @covers ID::getStep
      */
     public function testGetStep(): void
     {
@@ -63,8 +57,6 @@ class IDTest extends TestCase
      * Check step epoch.
      *
      * @return void
-     *
-     * @covers ID::getEpoch
      */
     public function testGetEpoch(): void
     {

@@ -32,8 +32,6 @@ class Base58Test extends TestCase
     /**
      * Test encoder.
      *
-     * @covers Base58::encode
-     *
      * @return void
      */
     public function testEncode(): void
@@ -48,8 +46,6 @@ class Base58Test extends TestCase
 
     /**
      * Test decoder.
-     *
-     * @covers Base58::decode
      *
      * @return void
      */
