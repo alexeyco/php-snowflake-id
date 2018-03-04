@@ -1,6 +1,6 @@
 {
     "name": "alexeyco/php-snowflake-id",
-    "description": "Generate Twitter Snowflake flavoured ID's",
+    "description": "Generate Twitter Snowflake flavoured IDs",
     "type": "library",
     "license": "MIT",
     "authors": [

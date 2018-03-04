@@ -111,11 +111,16 @@ class Node
     /**
      * Sets epoch UNIX timestamp
      *
-     * @param int $epoch
+     * @param \DateTime $epoch
      * @return Node
+     * @throws InvalidArgumentException
      */
-    public function setEpoch(int $epoch): Node
+    public function setEpoch(\DateTime $epoch): Node
     {
+        if ($epoch > $this->now()) {
+            throw new InvalidArgumentException('This epoch has not yet come');
+        }
+
         $this->epoch = $epoch;
         return $this;
     }

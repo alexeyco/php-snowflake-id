@@ -113,16 +113,6 @@ class ID
     }
 
     /**
-     *
-     *
-     * @return string
-     */
-    public function toBase2(): string
-    {
-        return base_convert($this->id, 10, 2);
-    }
-
-    /**
      * Returns base36-encoded ID
      *
      * @return string

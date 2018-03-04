@@ -1,0 +1,62 @@
+# PHP Snowflake ID
+
+Twitter Snowflake flavoured IDs:
+* Generate and parse it;
+* Convert it to base32, base58 and base64 data types;
+* Enjoy that it's not UUID (a joke, who does not like UUID).
+
+## Generate
+
+```php
+<?php
+
+use SnowFlake\Node;
+
+// Set up custom epoch and node
+Node::getInstance()
+    ->setEpoch(new \DateTime('2000-01-01 00:00:00')) // Default is 2006-03-21:20:50:14 GMT
+    ->setNode(1); // Default is 0; can be between 0 and 1023
+
+$id = Node::getInstance()->generate();
+
+var_dump($id->toInt());
+// => 6375898920270168065
+
+var_dump($id->toBase36());
+// => 1cfvnjc093zlt
+
+var_dump($id->toBase58());
+// => fNpb61U9L98
+
+var_dump($id->toBase64());
+// => NjM3NTg5ODkyMDI3MDE2ODA2NQ==
+```
+
+## Parse
+Soon...
+
+## License
+
+```
+MIT License
+
+Copyright (c) 2018 Alexey Popov
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
