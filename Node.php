@@ -62,7 +62,7 @@ class Node
      *
      * @return Node
      */
-    final public static function getInstance(): Node
+    final public static function getInstance(): self
     {
         if (self::$instance === null) {
             self::$instance = new self();

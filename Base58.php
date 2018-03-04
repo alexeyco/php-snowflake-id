@@ -60,7 +60,7 @@ class Base58
         $len = strlen($value) - 1;
 
         for ($i = $len, $j = 1, $base = strlen(self::$map); $i >= 0; $i--, $j *= $base) {
-            $result += $j * strpos(self::$map, $value{$i});
+            $result += $j * strpos(self::$map, $value[$i]);
         }
 
         return $result;
