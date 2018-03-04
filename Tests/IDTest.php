@@ -75,7 +75,7 @@ class IDTest extends TestCase
     }
 
     /**
-     * Returns current timestamp in microsecond
+     * Returns current timestamp in microsecond.
      *
      * @return int
      */
