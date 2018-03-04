@@ -11,6 +11,9 @@
 
 namespace SnowFlake;
 
+/**
+ * @see https://gist.github.com/jsjohnst/126883/8a9cba0d64bbcb9354e0348821fd97568d4f37c5
+ */
 class Base58
 {
     /**

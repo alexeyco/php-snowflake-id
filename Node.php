@@ -86,9 +86,14 @@ class Node
      *
      * @param int $node
      * @return Node
+     * @throws InvalidArgumentException
      */
     public function setNode(int $node): Node
     {
+        if ($node < 0 || $node > 1023) {
+            throw new InvalidArgumentException('The node number must be between 0 and 1023');
+        }
+
         $this->node = $node;
         return $this;
     }
