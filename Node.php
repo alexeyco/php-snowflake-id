@@ -97,6 +97,7 @@ class Node
         }
 
         $this->node = $node;
+
         return $this;
     }
 
@@ -126,6 +127,7 @@ class Node
         }
 
         $this->epoch = $epoch;
+
         return $this;
     }
 
