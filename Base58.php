@@ -22,9 +22,10 @@ class Base58
     protected static $map = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ';
 
     /**
-     * Returns base58-encoded value
+     * Returns base58-encoded value.
      *
      * @param int $value
+     *
      * @return string
      */
     public static function encode(int $value): string
@@ -32,24 +33,25 @@ class Base58
         $result = '';
         $base = strlen(self::$map);
 
-        while($value >= $base) {
+        while ($value >= $base) {
             $div = floor($value / $base);
             $mod = $value % $base;
-            $result = self::$map{$mod}.$result;
+            $result = self::$map[$mod].$result;
             $value = $div;
         }
 
         if ($value) {
-            $result = self::$map{intval($value)}.$result;
+            $result = self::$map[intval($value)].$result;
         }
 
         return $result;
     }
 
     /**
-     * Decodes base58-encoded string
+     * Decodes base58-encoded string.
      *
      * @param string $value
+     *
      * @return int
      */
     public static function decode(string $value): int
@@ -57,7 +59,7 @@ class Base58
         $result = 0;
         $len = strlen($value) - 1;
 
-        for($i = $len, $j = 1, $base = strlen(self::$map); $i >= 0; $i--, $j *= $base) {
+        for ($i = $len, $j = 1, $base = strlen(self::$map); $i >= 0; $i--, $j *= $base) {
             $result += $j * strpos(self::$map, $value{$i});
         }
 

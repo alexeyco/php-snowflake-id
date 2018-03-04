@@ -14,28 +14,28 @@ namespace SnowFlake;
 class ID
 {
     /**
-     * Node number
+     * Node number.
      *
      * @var int
      */
     private $node;
 
     /**
-     * Date of ID creation
+     * Date of ID creation.
      *
      * @var int
      */
     private $time;
 
     /**
-     * Snowflake step
+     * Snowflake step.
      *
      * @var int
      */
     private $step;
 
     /**
-     * Epoch timestamp
+     * Epoch timestamp.
      *
      * @var int
      */
@@ -47,7 +47,7 @@ class ID
     private $id;
 
     /**
-     * ID constructor
+     * ID constructor.
      *
      * @param int $node  Node number
      * @param int $time  Date of ID creation
@@ -65,7 +65,7 @@ class ID
     }
 
     /**
-     * Returns node number
+     * Returns node number.
      *
      * @return int
      */
@@ -75,7 +75,7 @@ class ID
     }
 
     /**
-     * Returns snowflake step
+     * Returns snowflake step.
      *
      * @return int
      */
@@ -85,7 +85,7 @@ class ID
     }
 
     /**
-     * Returns ID creation time
+     * Returns ID creation time.
      *
      * @return int
      */
@@ -95,7 +95,7 @@ class ID
     }
 
     /**
-     * Returns epoch
+     * Returns epoch.
      *
      * @return int
      */
@@ -113,7 +113,7 @@ class ID
     }
 
     /**
-     * Returns base36-encoded ID
+     * Returns base36-encoded ID.
      *
      * @return string
      */
@@ -123,7 +123,7 @@ class ID
     }
 
     /**
-     * Returns base58-encoded ID
+     * Returns base58-encoded ID.
      *
      * @return string
      */
@@ -133,7 +133,7 @@ class ID
     }
 
     /**
-     * Returns base64-encoded ID
+     * Returns base64-encoded ID.
      *
      * @return string
      */
@@ -143,7 +143,7 @@ class ID
     }
 
     /**
-     * Returns generated ID
+     * Returns generated ID.
      *
      * @return int
      */
@@ -155,6 +155,6 @@ class ID
         $nodeBits = str_pad(decbin($this->node), 10, '0', STR_PAD_LEFT);
         $stepBits = str_pad(decbin($this->step), 12, '0', STR_PAD_LEFT);
 
-        return bindec('0' . $timeBits . $nodeBits . $stepBits);
+        return bindec('0'.$timeBits.$nodeBits.$stepBits);
     }
 }

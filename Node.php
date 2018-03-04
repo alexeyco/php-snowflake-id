@@ -14,28 +14,28 @@ namespace SnowFlake;
 class Node
 {
     /**
-     * Node instance
+     * Node instance.
      *
      * @var Node
      */
     private static $instance;
 
     /**
-     * Node number
+     * Node number.
      *
      * @var int
      */
     private $node;
 
     /**
-     * Epoch UNIX timestamp
+     * Epoch UNIX timestamp.
      *
      * @var int
      */
     private $epoch;
 
     /**
-     * ID last request microtime
+     * ID last request microtime.
      *
      * @var int
      */
@@ -47,7 +47,7 @@ class Node
     private $step = 0;
 
     /**
-     * Generator constructor
+     * Generator constructor.
      */
     final private function __construct()
     {
@@ -58,21 +58,21 @@ class Node
     }
 
     /**
-     * Returns node instance
+     * Returns node instance.
      *
      * @return Node
      */
     final public static function getInstance(): Node
     {
         if (self::$instance === null) {
-            self::$instance = new Node();
+            self::$instance = new self();
         }
 
         return self::$instance;
     }
 
     /**
-     * Returns node number
+     * Returns node number.
      *
      * @return int
      */
@@ -82,13 +82,15 @@ class Node
     }
 
     /**
-     * Sets node number
+     * Sets node number.
      *
      * @param int $node
-     * @return Node
+     *
      * @throws InvalidArgumentException
+     *
+     * @return Node
      */
-    public function setNode(int $node): Node
+    public function setNode(int $node): self
     {
         if ($node < 0 || $node > 1023) {
             throw new InvalidArgumentException('The node number must be between 0 and 1023');
@@ -99,7 +101,7 @@ class Node
     }
 
     /**
-     * Returns epoch UNIX timestamp
+     * Returns epoch UNIX timestamp.
      *
      * @return int
      */
@@ -109,13 +111,15 @@ class Node
     }
 
     /**
-     * Sets epoch UNIX timestamp
+     * Sets epoch UNIX timestamp.
      *
      * @param \DateTime $epoch
-     * @return Node
+     *
      * @throws InvalidArgumentException
+     *
+     * @return Node
      */
-    public function setEpoch(\DateTime $epoch): Node
+    public function setEpoch(\DateTime $epoch): self
     {
         if ($epoch > $this->now()) {
             throw new InvalidArgumentException('This epoch has not yet come');
@@ -126,7 +130,7 @@ class Node
     }
 
     /**
-     * Generates and returns unique snowflake ID
+     * Generates and returns unique snowflake ID.
      *
      * @return ID
      */
@@ -144,7 +148,7 @@ class Node
     }
 
     /**
-     * Returns unix timestamp in microseconds
+     * Returns unix timestamp in microseconds.
      *
      * @return int
      */
