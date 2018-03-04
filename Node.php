@@ -156,6 +156,6 @@ class Node
      */
     private function now(): int
     {
-        return floor(microtime(true) * 1000);
+        return (int) floor(microtime(true) * 1000);
     }
 }
