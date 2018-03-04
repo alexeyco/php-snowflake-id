@@ -96,4 +96,27 @@ class NodeTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         Node::getInstance()->setEpoch($epoch);
     }
+
+    /**
+     * Test generated ID.
+     *
+     * @throws \SnowFlake\InvalidArgumentException
+     *
+     * @return void
+     */
+    public function testGenerate(): void
+    {
+        $epoch = (new \DateTime())->setTimestamp(1142976050);
+        $node = 123;
+
+        Node::getInstance()
+            ->setEpoch($epoch)
+            ->setNode($node);
+
+        $id = Node::getInstance()
+            ->generate();
+
+        $this->assertEquals((int) floor($id->getEpoch() / 1000), $epoch->getTimestamp());
+        $this->assertEquals($id->getNode(), $node);
+    }
 }
