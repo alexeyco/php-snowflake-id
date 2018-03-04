@@ -75,16 +75,6 @@ class ID
     }
 
     /**
-     * Returns snowflake step.
-     *
-     * @return int
-     */
-    public function getStep(): int
-    {
-        return $this->step;
-    }
-
-    /**
      * Returns ID creation time.
      *
      * @return int
@@ -92,6 +82,16 @@ class ID
     public function getTime(): int
     {
         return $this->time;
+    }
+
+    /**
+     * Returns snowflake step.
+     *
+     * @return int
+     */
+    public function getStep(): int
+    {
+        return $this->step;
     }
 
     /**

@@ -1,1 +1,4 @@
 /.idea
+/phpunit-7.0.2.phar
+/vendor
+/composer.lock

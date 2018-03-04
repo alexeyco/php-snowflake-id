@@ -37,7 +37,7 @@ class Base58
             $div = floor($value / $base);
             $mod = $value % $base;
             $result = self::$map[$mod].$result;
-            $value = $div;
+            $value = (int) $div;
         }
 
         if ($value) {
