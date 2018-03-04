@@ -35,24 +35,24 @@ class Node
     private $epoch;
 
     /**
-     * Date of last ID request
+     * ID last request microtime
      *
-     * @var \DateTime
+     * @var int
      */
     private $time;
 
     /**
      * @var int
      */
-    private $step = 1;
+    private $step = 0;
 
     /**
      * Generator constructor
      */
     final private function __construct()
     {
-        $this->node = 1;
-        $this->epoch = 1288834974657;
+        $this->node = 0;
+        $this->epoch = 1142976050000; // 2006-03-21:20:50:14 GMT
 
         $this->time = $this->now();
     }
@@ -123,21 +123,23 @@ class Node
     public function generate(): ID
     {
         $now = $this->now();
-        if ($this->time->diff($now)) {
+        if ($this->time === $now) {
             $this->step++;
         } else {
-            $this->step = 1;
+            $this->step = 0;
             $this->time = $now;
         }
 
-        return new ID($this->node, $this->time, $this->step);
+        return new ID($this->node, $this->time, $this->step, $this->epoch);
     }
 
     /**
-     * @return \DateTime
+     * Returns unix timestamp in microseconds
+     *
+     * @return int
      */
-    private function now(): \DateTime
+    private function now(): int
     {
-        return new \DateTime('now');
+        return floor(microtime(true) * 1000);
     }
 }

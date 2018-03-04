@@ -23,7 +23,7 @@ class ID
     /**
      * Date of ID creation
      *
-     * @var \DateTime
+     * @var int
      */
     private $time;
 
@@ -35,6 +35,13 @@ class ID
     private $step;
 
     /**
+     * Epoch timestamp
+     *
+     * @var int
+     */
+    private $epoch;
+
+    /**
      * @var int
      */
     private $id;
@@ -42,15 +49,17 @@ class ID
     /**
      * ID constructor
      *
-     * @param int       $node Node number
-     * @param \DateTime $time Date of ID creation
-     * @param int       $step Snowflake step
+     * @param int $node  Node number
+     * @param int $time  Date of ID creation
+     * @param int $step  Snowflake step
+     * @param int $epoch
      */
-    public function __construct(int $node, \DateTime $time, int $step)
+    public function __construct(int $node, int $time, int $step, int $epoch)
     {
         $this->node = $node;
         $this->time = $time;
         $this->step = $step;
+        $this->epoch = $epoch;
 
         $this->id = $this->generate();
     }
@@ -78,11 +87,21 @@ class ID
     /**
      * Returns ID creation time
      *
-     * @return \DateTime
+     * @return int
      */
-    public function getTime(): \DateTime
+    public function getTime(): int
     {
         return $this->time;
+    }
+
+    /**
+     * Returns epoch
+     *
+     * @return int
+     */
+    public function getEpoch(): int
+    {
+        return $this->epoch;
     }
 
     /**
@@ -100,7 +119,7 @@ class ID
      */
     public function toBase2(): string
     {
-
+        return base_convert($this->id, 10, 2);
     }
 
     /**
@@ -110,7 +129,7 @@ class ID
      */
     public function toBase36(): string
     {
-
+        return base_convert($this->id, 10, 36);
     }
 
     /**
@@ -120,7 +139,7 @@ class ID
      */
     public function toBase58(): string
     {
-
+        return Base58::encode($this->id);
     }
 
     /**
@@ -130,7 +149,7 @@ class ID
      */
     public function toBase64(): string
     {
-
+        return base64_encode($this->id);
     }
 
     /**
@@ -140,6 +159,12 @@ class ID
      */
     protected function generate(): int
     {
-        $epoch = Node::getInstance()->getEpoch();
+        $timeOffset = $this->time - $this->epoch;
+
+        $timeBits = str_pad(decbin($timeOffset), 41, '0', STR_PAD_LEFT);
+        $nodeBits = str_pad(decbin($this->node), 10, '0', STR_PAD_LEFT);
+        $stepBits = str_pad(decbin($this->step), 12, '0', STR_PAD_LEFT);
+
+        return bindec('0' . $timeBits . $nodeBits . $stepBits);
     }
 }
