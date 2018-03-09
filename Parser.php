@@ -42,20 +42,8 @@ class Parser
      *
      * @return ID
      */
-    public static function fromBase36(string $id): ID
+    public static function fromString(string $id): ID
     {
         return self::fromInt(base_convert($id, 36, 10));
-    }
-
-    /**
-     * Parse Snowflake ID from base64 string.
-     *
-     * @param string $id
-     *
-     * @return ID
-     */
-    public static function fromBase64(string $id): ID
-    {
-        return self::fromInt(base64_decode($id));
     }
 }

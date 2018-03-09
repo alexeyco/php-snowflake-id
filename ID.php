@@ -119,19 +119,9 @@ class ID
      *
      * @return string
      */
-    public function toBase36(): string
+    public function toString(): string
     {
         return base_convert($this->id, 10, 36);
-    }
-
-    /**
-     * Returns base64-encoded ID.
-     *
-     * @return string
-     */
-    public function toBase64(): string
-    {
-        return base64_encode($this->id);
     }
 
     /**
