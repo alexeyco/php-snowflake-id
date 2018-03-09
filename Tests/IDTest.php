@@ -34,9 +34,15 @@ class IDTest extends TestCase
      */
     public function testGetTime(): void
     {
-        foreach ([999, 888, 777] as $time) {
-            $id = new ID(0, $time, 0, 0);
-            $this->assertEquals($time, $id->getTime());
+        $testSet = [
+            new \DateTime('2011-01-01 00:00:00'),
+            new \DateTime('2016-12-03 10:11:12'),
+            new \DateTime('now'),
+        ];
+
+        foreach ($testSet as $time) {
+            $id = new ID(0, $time->getTimestamp(), 0, 0);
+            $this->assertEquals($time->getTimestamp(), $id->getTime()->getTimestamp());
         }
     }
 
@@ -60,9 +66,15 @@ class IDTest extends TestCase
      */
     public function testGetEpoch(): void
     {
-        foreach ([45, 67, 89] as $epoch) {
-            $id = new ID(0, $this->now(), 0, $epoch);
-            $this->assertEquals($epoch, $id->getEpoch());
+        $testSet = [
+            new \DateTime('1989-01-23 00:00:00'),
+            new \DateTime('2000-10-03 10:11:12'),
+            new \DateTime('now'),
+        ];
+
+        foreach ($testSet as $epoch) {
+            $id = new ID(0, $this->now(), 0, $epoch->getTimestamp() * 1000);
+            $this->assertEquals($epoch->getTimestamp(), $id->getEpoch()->getTimestamp());
         }
     }
 
