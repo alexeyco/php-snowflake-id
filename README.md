@@ -6,7 +6,7 @@
 
 Twitter Snowflake flavoured IDs:
 * Generate and parse it;
-* Convert it to base32, base58 and base64 data types;
+* Convert it to base32 and base64 data types;
 * Enjoy that it's not UUID (a joke, who does not like UUID).
 
 ## Generate
@@ -29,15 +29,19 @@ var_dump($id->toInt());
 var_dump($id->toBase36());
 // => 1cfvnjc093zlt
 
-var_dump($id->toBase58());
-// => fNpb61U9L98
-
 var_dump($id->toBase64());
 // => NjM3NTg5ODkyMDI3MDE2ODA2NQ==
 ```
 
 ## Parse
-Soon...
+```php
+<?php
+
+use SnowFlake\Parser;
+
+$idFromBase36 = Parser::fromBase36('1cfvnjc093zlt');
+$idFromBase64 = Parser::fromBase64('NjM3NTg5ODkyMDI3MDE2ODA2NQ');
+```
 
 ## License
 

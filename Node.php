@@ -13,6 +13,8 @@ namespace SnowFlake;
 
 class Node
 {
+    use TimeTrait;
+
     /**
      * Node instance.
      *
@@ -108,10 +110,7 @@ class Node
      */
     public function getEpoch(): \DateTime
     {
-        $timeStamp = (int) floor($this->epoch / 1000);
-
-        return (new \DateTime())
-            ->setTimestamp($timeStamp);
+        return $this->time((int) floor($this->epoch / 1000));
     }
 
     /**

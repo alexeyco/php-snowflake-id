@@ -13,6 +13,8 @@ namespace SnowFlake;
 
 class ID
 {
+    use TimeTrait;
+
     /**
      * Node number.
      *
@@ -77,11 +79,11 @@ class ID
     /**
      * Returns ID creation time.
      *
-     * @return int
+     * @return \DateTime
      */
-    public function getTime(): int
+    public function getTime(): \DateTime
     {
-        return $this->time;
+        return $this->time($this->time);
     }
 
     /**
@@ -97,11 +99,11 @@ class ID
     /**
      * Returns epoch.
      *
-     * @return int
+     * @return \DateTime
      */
-    public function getEpoch(): int
+    public function getEpoch(): \DateTime
     {
-        return $this->epoch;
+        return $this->time((int) floor($this->epoch / 1000));
     }
 
     /**
@@ -120,16 +122,6 @@ class ID
     public function toBase36(): string
     {
         return base_convert($this->id, 10, 36);
-    }
-
-    /**
-     * Returns base58-encoded ID.
-     *
-     * @return string
-     */
-    public function toBase58(): string
-    {
-        return Base58::encode($this->id);
     }
 
     /**

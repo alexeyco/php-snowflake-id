@@ -116,7 +116,7 @@ class NodeTest extends TestCase
         $id = Node::getInstance()
             ->generate();
 
-        $this->assertEquals((int) floor($id->getEpoch() / 1000), $epoch->getTimestamp());
+        $this->assertEquals($id->getEpoch()->getTimestamp(), $epoch->getTimestamp());
         $this->assertEquals($id->getNode(), $node);
     }
 }

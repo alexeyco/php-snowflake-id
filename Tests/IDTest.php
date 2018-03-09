@@ -34,9 +34,15 @@ class IDTest extends TestCase
      */
     public function testGetTime(): void
     {
-        foreach ([999, 888, 777] as $time) {
-            $id = new ID(0, $time, 0, 0);
-            $this->assertEquals($time, $id->getTime());
+        $testSet = [
+            new \DateTime('2011-01-01 00:00:00'),
+            new \DateTime('2016-12-03 10:11:12'),
+            new \DateTime('now'),
+        ];
+
+        foreach ($testSet as $time) {
+            $id = new ID(0, $time->getTimestamp(), 0, 0);
+            $this->assertEquals($time->getTimestamp(), $id->getTime()->getTimestamp());
         }
     }
 
@@ -60,9 +66,15 @@ class IDTest extends TestCase
      */
     public function testGetEpoch(): void
     {
-        foreach ([45, 67, 89] as $epoch) {
-            $id = new ID(0, $this->now(), 0, $epoch);
-            $this->assertEquals($epoch, $id->getEpoch());
+        $testSet = [
+            new \DateTime('1989-01-23 00:00:00'),
+            new \DateTime('2000-10-03 10:11:12'),
+            new \DateTime('now'),
+        ];
+
+        foreach ($testSet as $epoch) {
+            $id = new ID(0, $this->now(), 0, $epoch->getTimestamp() * 1000);
+            $this->assertEquals($epoch->getTimestamp(), $id->getEpoch()->getTimestamp());
         }
     }
 
@@ -153,51 +165,6 @@ class IDTest extends TestCase
             $id = new ID($input['node'], $input['time'], $input['step'], $input['epoch']);
 
             $this->assertEquals($id->toBase36(), $set['result']);
-        }
-    }
-
-    /**
-     * Check ID to base58 conversion.
-     *
-     * @return void
-     */
-    public function testToBase58(): void
-    {
-        $testSet = [
-            [
-                'input' => [
-                    'node'  => 222,
-                    'time'  => 1520200239242,
-                    'epoch' => 1520197034158,
-                    'step'  => 206,
-                ],
-                'result' => '768ouPrG',
-            ],
-            [
-                'input' => [
-                    'node'  => 720,
-                    'time'  => 1520200250455,
-                    'epoch' => 1520195604848,
-                    'step'  => 3971,
-                ],
-                'result' => '9PQJLqFe',
-            ],
-            [
-                'input' => [
-                    'node'  => 573,
-                    'time'  => 1520200256658,
-                    'epoch' => 1520195664306,
-                    'step'  => 347,
-                ],
-                'result' => '9HYqtFs4',
-            ],
-        ];
-
-        foreach ($testSet as $set) {
-            $input = $set['input'];
-            $id = new ID($input['node'], $input['time'], $input['step'], $input['epoch']);
-
-            $this->assertEquals($id->toBase58(), $set['result']);
         }
     }
 
