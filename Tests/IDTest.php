@@ -124,11 +124,11 @@ class IDTest extends TestCase
     }
 
     /**
-     * Check ID to base36 conversion.
+     * Check ID to string conversion.
      *
      * @return void
      */
-    public function testToBase36(): void
+    public function testToString(): void
     {
         $testSet = [
             [
@@ -164,52 +164,7 @@ class IDTest extends TestCase
             $input = $set['input'];
             $id = new ID($input['node'], $input['time'], $input['step'], $input['epoch']);
 
-            $this->assertEquals($id->toBase36(), $set['result']);
-        }
-    }
-
-    /**
-     * Check ID to base64 conversion.
-     *
-     * @return void
-     */
-    public function testToBase64(): void
-    {
-        $testSet = [
-            [
-                'input' => [
-                    'node'  => 916,
-                    'time'  => 1520200271177,
-                    'epoch' => 1520197875362,
-                    'step'  => 941,
-                ],
-                'result' => 'MTAwNDg3ODAxOTA2Mzc=',
-            ],
-            [
-                'input' => [
-                    'node'  => 384,
-                    'time'  => 1520200280840,
-                    'epoch' => 1520196808946,
-                    'step'  => 26,
-                ],
-                'result' => 'MTQ1NjIxODA0NjQ2NjY=',
-            ],
-            [
-                'input' => [
-                    'node'  => 1,
-                    'time'  => 1520200287390,
-                    'epoch' => 1520190943498,
-                    'step'  => 1164,
-                ],
-                'result' => 'MzkxOTExMjM1OTY0Mjg=',
-            ],
-        ];
-
-        foreach ($testSet as $set) {
-            $input = $set['input'];
-            $id = new ID($input['node'], $input['time'], $input['step'], $input['epoch']);
-
-            $this->assertEquals($id->toBase64(), $set['result']);
+            $this->assertEquals($id->toString(), $set['result']);
         }
     }
 
