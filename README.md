@@ -6,7 +6,7 @@
 
 Twitter Snowflake flavoured IDs:
 * Generate and parse it;
-* Convert it to base32 and base64 data types;
+* Convert it to string or integer value;
 * Enjoy that it's not UUID (a joke, who does not like UUID).
 
 ## Generate
@@ -26,11 +26,8 @@ $id = Node::getInstance()->generate();
 var_dump($id->toInt());
 // => 6375898920270168065
 
-var_dump($id->toBase36());
+var_dump($id->toString();
 // => 1cfvnjc093zlt
-
-var_dump($id->toBase64());
-// => NjM3NTg5ODkyMDI3MDE2ODA2NQ==
 ```
 
 ## Parse
@@ -39,8 +36,10 @@ var_dump($id->toBase64());
 
 use SnowFlake\Parser;
 
-$idFromBase36 = Parser::fromBase36('1cfvnjc093zlt');
-$idFromBase64 = Parser::fromBase64('NjM3NTg5ODkyMDI3MDE2ODA2NQ');
+$id = Parser::fromString('1cfvnjc093zlt');
+
+var_dump($id);
+// ==> 6375898920270168065
 ```
 
 ## License
