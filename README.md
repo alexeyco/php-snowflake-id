@@ -38,7 +38,7 @@ use SnowFlake\Parser;
 
 $id = Parser::fromString('1cfvnjc093zlt');
 
-var_dump($id);
+var_dump($id->toInt());
 // ==> 6375898920270168065
 ```
 
