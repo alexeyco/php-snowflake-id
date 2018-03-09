@@ -169,51 +169,6 @@ class IDTest extends TestCase
     }
 
     /**
-     * Check ID to base58 conversion.
-     *
-     * @return void
-     */
-    public function testToBase58(): void
-    {
-        $testSet = [
-            [
-                'input' => [
-                    'node'  => 222,
-                    'time'  => 1520200239242,
-                    'epoch' => 1520197034158,
-                    'step'  => 206,
-                ],
-                'result' => '768ouPrG',
-            ],
-            [
-                'input' => [
-                    'node'  => 720,
-                    'time'  => 1520200250455,
-                    'epoch' => 1520195604848,
-                    'step'  => 3971,
-                ],
-                'result' => '9PQJLqFe',
-            ],
-            [
-                'input' => [
-                    'node'  => 573,
-                    'time'  => 1520200256658,
-                    'epoch' => 1520195664306,
-                    'step'  => 347,
-                ],
-                'result' => '9HYqtFs4',
-            ],
-        ];
-
-        foreach ($testSet as $set) {
-            $input = $set['input'];
-            $id = new ID($input['node'], $input['time'], $input['step'], $input['epoch']);
-
-            $this->assertEquals($id->toBase58(), $set['result']);
-        }
-    }
-
-    /**
      * Check ID to base64 conversion.
      *
      * @return void

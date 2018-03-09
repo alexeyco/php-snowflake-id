@@ -125,16 +125,6 @@ class ID
     }
 
     /**
-     * Returns base58-encoded ID.
-     *
-     * @return string
-     */
-    public function toBase58(): string
-    {
-        return Base58::encode($this->id);
-    }
-
-    /**
      * Returns base64-encoded ID.
      *
      * @return string
